@@ -2,6 +2,7 @@ package com.piggymetrics.auth.service;
 
 import com.piggymetrics.auth.domain.User;
 import com.piggymetrics.auth.repository.UserRepository;
+import com.piggymetrics.auth.service.security.AuthServiceEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ public class UserServiceImpl implements UserService {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
-	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	@Autowired
+	private AuthServiceEncoder encoder;
 
 	@Autowired
 	private UserRepository repository;
